@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import { useStore } from "vuex";
 import { register } from '@/services/auth'
+import Panel from '@/components/Panel.vue';
+
 const email = ref('')
 const password = ref('')
 const error = ref('')
@@ -23,31 +25,21 @@ const registerUser = async () => {
 </script>
 
 <template>
-  <v-row>
-    <v-col xs="12" sm="8" offset-sm="2" lg="6" offset-lg="3">
-      <div class="white elevation-2">
-        <v-toolbar flat dense color="deep-orange-lighten-2">
-          <v-toolbar-title>Register</v-toolbar-title>
-        </v-toolbar>
-      </div>
-      <div class="px-4 py-2">
-        <v-form>
-          <v-text-field label="Email" v-model="email" required />
-          <br />
-          <v-text-field label="Password" type="password" v-model="password" />
-        </v-form>
+  <Panel title="Register">
+    <v-form>
+      <v-text-field label="Email" v-model="email" required />
+      <br />
+      <v-text-field label="Password" type="password" v-model="password" />
+    </v-form>
 
-        <div v-html="error" class="error" />
-        <div class="text-center">
-          <v-btn color="deep-orange-lighten-2" @click="registerUser">Register</v-btn>
-        </div>
-
-      </div>
-    </v-col>
-  </v-row>
+    <div v-html="error" class="error" />
+    <div class="text-center">
+      <v-btn color="deep-orange-lighten-2" @click="registerUser">Register</v-btn>
+    </div>
+  </Panel>
 </template>
 
-<style>
+<style scoped>
 .error {
   color: red;
 }

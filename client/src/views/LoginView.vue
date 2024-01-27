@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useStore } from "vuex";
+import { useStore } from 'vuex'
 import { login } from '@/services/auth'
+import Panel from '@/components/Panel.vue'
+
 const email = ref('')
 const password = ref('')
 const error = ref('')
-const store = useStore();
+const store = useStore()
 
 const loginUser = async () => {
   try {
@@ -13,9 +15,9 @@ const loginUser = async () => {
       email: email.value,
       password: password.value
     })
-    error.value = "";
-    store.dispatch("setToken", response.data.token)
-    store.dispatch("setUser", response.data.user)
+    error.value = ''
+    store.dispatch('setToken', response.data.token)
+    store.dispatch('setUser', response.data.user)
   } catch (err: any) {
     error.value = err.response.data.error
   }
@@ -23,31 +25,21 @@ const loginUser = async () => {
 </script>
 
 <template>
-  <v-row>
-    <v-col xs="12" sm="8" offset-sm="2" lg="6" offset-lg="3">
-      <div class="white elevation-2">
-        <v-toolbar flat dense color="deep-orange-lighten-2">
-          <v-toolbar-title>Login</v-toolbar-title>
-        </v-toolbar>
-      </div>
-      <div class="px-4 py-2">
-        <v-form>
-          <v-text-field label="Email" v-model="email" required />
-          <br />
-          <v-text-field label="Password" type="password" v-model="password" />
-        </v-form>
+  <Panel title="Login">
+    <v-form>
+      <v-text-field label="Email" v-model="email" required />
+      <br />
+      <v-text-field label="Password" type="password" v-model="password" />
+    </v-form>
 
-        <div v-html="error" class="error" />
-        <div class="text-center">
-          <v-btn color="deep-orange-lighten-2" @click="loginUser">Login</v-btn>
-        </div>
-
-      </div>
-    </v-col>
-  </v-row>
+    <div v-html="error" class="error" />
+    <div class="text-center">
+      <v-btn color="deep-orange-lighten-2" @click="loginUser">Login</v-btn>
+    </div>
+  </Panel>
 </template>
 
-<style>
+<style scoped>
 .error {
   color: red;
 }
