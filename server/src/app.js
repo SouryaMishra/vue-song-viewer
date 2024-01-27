@@ -9,10 +9,6 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(cors());
 
-app.get("/", (_, res) =>
-  res.json({ message: "Hello, have a great day ahead" })
-);
-
 require("./routes")(app);
 
 sequelize.sync().then(() => {
