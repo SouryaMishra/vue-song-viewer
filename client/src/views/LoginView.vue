@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { VBtn } from 'vuetify/components/VBtn'
 import { ref } from 'vue'
+import { useStore } from "vuex";
 import { login } from '@/services/auth'
 const email = ref('')
 const password = ref('')
 const error = ref('')
+const store = useStore();
 
 const loginUser = async () => {
   try {
-    await login({
+    const response = await login({
       email: email.value,
       password: password.value
     })
     error.value = "";
+    store.dispatch("setToken", response.data.token)
+    store.dispatch("setUser", response.data.user)
   } catch (err: any) {
     error.value = err.response.data.error
   }
