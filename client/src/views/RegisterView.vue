@@ -9,6 +9,8 @@ const password = ref('')
 const error = ref('')
 const store = useStore();
 
+const rules = [value => (Boolean(value) && Boolean(value.trim())) || "Field is required"]
+
 const registerUser = async () => {
   try {
     const response = await register({
@@ -27,7 +29,7 @@ const registerUser = async () => {
 <template>
   <Panel title="Register">
     <v-form>
-      <v-text-field label="Email" v-model="email" required />
+      <v-text-field label="Email" v-model="email" :rules="rules" />
       <br />
       <v-text-field label="Password" type="password" v-model="password" />
     </v-form>
