@@ -36,7 +36,7 @@ const loginUser = async () => {
 
     <div v-html="error" class="error" />
     <div class="text-center">
-      <v-btn color="deep-orange-lighten-2" @click="loginUser">Login</v-btn>
+      <v-btn color="deep-orange-lighten-4" @click="loginUser">Login</v-btn>
     </div>
   </Panel>
 </template>

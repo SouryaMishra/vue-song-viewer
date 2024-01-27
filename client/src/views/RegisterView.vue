@@ -36,7 +36,7 @@ const registerUser = async () => {
 
     <div v-html="error" class="error" />
     <div class="text-center">
-      <v-btn color="deep-orange-lighten-2" @click="registerUser">Register</v-btn>
+      <v-btn color="deep-orange-lighten-4" @click="registerUser">Register</v-btn>
     </div>
   </Panel>
 </template>
