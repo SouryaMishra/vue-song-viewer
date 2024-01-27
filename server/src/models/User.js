@@ -1,11 +1,24 @@
+const { hashPassword } = require("../utils");
+
 module.exports = (sequelize, DataTypes) => {
-  return sequelize.define("User", {
-    email: {
-      unique: true,
-      type: DataTypes.STRING,
+  const User = sequelize.define(
+    "User",
+    {
+      email: {
+        unique: true,
+        type: DataTypes.STRING,
+      },
+      password: {
+        type: DataTypes.STRING(60),
+      },
     },
-    password: {
-      type: DataTypes.STRING,
-    },
-  });
+    {
+      hooks: {
+        beforeCreate: hashPassword,
+        beforeUpdate: hashPassword,
+      },
+    }
+  );
+
+  return User;
 };
