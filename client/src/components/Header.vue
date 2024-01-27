@@ -12,20 +12,20 @@ const logout = () => {
 </script>
 
 <template>
-    <v-toolbar fixed color="deep-orange-lighten-2">
+    <v-toolbar elevation="4" color="deep-orange-lighten-3">
         <v-toolbar-title class="mr-4"> <v-btn to="/">
                 Songs
             </v-btn> </v-toolbar-title>
 
         <v-toolbar-items>
-            <v-btn>Browse</v-btn>
+            <v-btn :to="{ name: 'songs' }">Browse</v-btn>
         </v-toolbar-items>
 
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
-            <v-btn v-if="!store.state.isUserLoggedIn" to="login">Login</v-btn>
-            <v-btn v-if="!store.state.isUserLoggedIn" to="register">Sign Up
+            <v-btn v-if="!store.state.isUserLoggedIn" :to="{ name: 'login' }">Login</v-btn>
+            <v-btn v-if="!store.state.isUserLoggedIn" :to="{ name: 'register' }">Sign Up
             </v-btn>
             <v-btn v-if="store.state.isUserLoggedIn" @click="logout">Logout
             </v-btn>
