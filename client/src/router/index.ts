@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import LoginView from '../views/LoginView.vue'
 import SongsView from '../views/SongsView.vue'
+import SingleSongView from '../views/SingleSongView.vue'
 import SongsCreateView from '../views/SongsCreateView.vue'
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/songs',
       name: 'songs',
       component: SongsView
+    },
+    {
+      path: '/songs/:songId',
+      name: 'single-song',
+      component: SingleSongView
     },
     {
       path: '/songs/create',

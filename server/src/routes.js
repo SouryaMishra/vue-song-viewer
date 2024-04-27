@@ -1,5 +1,5 @@
 const { register, login } = require("./controllers/authController");
-const { getAll, post } = require("./controllers/songsController");
+const { getAll, post, getById } = require("./controllers/songsController");
 const { validate } = require("./validations/authValidator");
 
 module.exports = (app) => {
@@ -12,6 +12,8 @@ module.exports = (app) => {
   app.post("/login", login);
 
   app.get("/songs", getAll);
+
+  app.get("/songs/:songId", getById);
 
   app.post("/song", post);
 };

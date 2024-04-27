@@ -33,6 +33,7 @@ onMounted(() => {
                 <v-col xs="6">
                     <img class="album-image" :src="song.albumImage" /> </v-col>
             </v-row>
+            <v-btn color="deep-orange-lighten-4" flat :to="{ name: 'single-song', params: { id: song.id } }">View</v-btn>
         </div>
         <p class="text-center" v-if="songs.length === 0">Loading</p>
 
